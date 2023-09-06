@@ -50,7 +50,7 @@ const upload = multer({ storage });
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.get('/test',(req,res)=>{
-  return res.json({"hello"})
+  return res.json({message:"hello"})
 })
 
 //*ROUTES
