@@ -31,7 +31,11 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: "true" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: "true" }));
 app.use(cors({
-  origin: 'https://mindpixel2-csil.vercel.app'
+  origin: 'https://mindpixel2-csil.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204, 
+  allowedHeaders: 'Content-Type,Authorization',
 }));
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
