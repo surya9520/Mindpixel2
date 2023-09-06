@@ -30,9 +30,7 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: "true" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: "true" }));
-app.use(cors({
-  origin: 'https://mindpixel2.vercel.app/'
-}));
+// app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 //*FILE STORAGE
@@ -49,9 +47,6 @@ const upload = multer({ storage });
 //*ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
-app.get('/test',(req,res)=>{
-  return res.json({message:"hello"})
-})
 
 //*ROUTES
 app.use("/auth", authRoutes);
